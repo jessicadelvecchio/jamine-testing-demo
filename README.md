@@ -92,6 +92,57 @@ Testing libraries typically have some functionality to help us undo the side eff
 
 })
 
+## Best practices
+
+Not all code will fit perfectly into any testing category so often a combination of unit and integration tests will be likely.
+
+Most start with writing unit tests to make sure that individual functions are working. From there, writing integration tests to make sure that everything is interacting the way that it should.
+
+### What to test
+
+- Test every function in at least one way
+- Think about edge cases
+  - What if the list was empty?
+  - What about non-integer numbers?
+  - What if the file can't be found?
+  - Is the first case/last case handled differently?
+
+### Writing testable code
+
+- Write code that is easier to test
+  - More functions and smaller functions: easer to test and debug
+  - Don't mix logic and UI in a function
+
+### Unit testing
+
+- Tests are arrow in scope
+- Used to verify a module of code is doing what it is indended to do
+- These are simple and easy to write
+- Work well with pure functions. Pure functions do not have side effects on external variables and are easily tested with a simple unit test
+
+> Example of a pure function
+
+```
+function append(arr, val){
+return [...arr, val]
+}
+```
+
+### Integration testing
+
+- Tests are broader in scope
+- They verify that multiple modules of code are working together
+- Are more complex to write and take more time to write
+- They work well with impure functions. Impure functions have side effects on external variables. Such as, updating the DOM, writing to a database, etc.
+
+> Example of an impure function
+
+```
+function append(arr, val){
+arr.push(val)
+}
+```
+
 ## Other notes
 
 One of the example functions uses `Set` and the `...` operator. I had to look them up so here they are for anyone else who may need to know.
